@@ -41,6 +41,7 @@
     cursor: pointer;
     transition: 0.3s;
     transition-timing-function: ease-in-out;
+    box-shadow:1px 3px 4px 2px;
 }
 
 .inMobilePrll {
@@ -140,5 +141,5 @@
         margin-bottom: 10px; /* Space below login image */
         width: 40px;
     }
-    
+
 }
