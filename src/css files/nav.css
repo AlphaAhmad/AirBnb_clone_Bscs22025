@@ -1,0 +1,65 @@
+
+.Nav{
+    padding: 20px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.logo{
+    width: 4vw;
+    margin-left: 5vw;
+}
+
+.nav_options{
+    display: flex;
+    margin-left: 32vw;
+    list-style-type: none;
+    position: relative;
+    padding: 0; /* Remove default*/
+    position: relative;
+}
+
+.nav_options li{
+    align-items: center;
+    position:sticky;
+    overflow: hidden;
+    /* margin-right: 5vw; */
+    font-size: large;
+    padding-right:4vw;
+    transition: font-size 0.1s ease-in-out
+}
+
+.loginImg{
+    max-width: 3.5vw;
+    cursor: pointer;
+}
+
+.dropdown {
+    margin-left: 26vw;
+    position: relative;
+    display: inline-block;
+    justify-content: center;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #928d8d;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(73, 46, 46, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    
+  }
+
+  .dropdown-content.show {
+    display: block;
+    }
+  
+
+/* animations */
+.nav_options li:hover{
+    font-size:larger;
+    position: relative;
+    overflow:hidden;
+}
