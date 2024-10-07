@@ -3,17 +3,45 @@
     flex-direction: column; */
     /* remove below when making a row of cards */
     align-items: center; 
-
+    margin-bottom: 10px;
+    
 }
 
 .display-img{
-    width:470px;
+    width:520px;
 }
 
 .display-img img{
-    border-radius: 20px;
+    border-radius: 12px;
 }
 
-.cardInfo{
+.cardInfo{ 
+    margin-left: 5px;
+    margin-top: 20px;
+    font-size:larger;
+}
+
+.boldIt{
+    font-weight: bold;
+}
+
+/* animations */
+
+.card:hover{
+    /* width: 300px; */
+    color:brown;
+}
+
+
+/* media queries */
+@media (max-width: 767px) {
+    .card{
+        margin: 10px;
+    }
     
+    .display-img{
+        width:320px;
+    }
+
+
 }

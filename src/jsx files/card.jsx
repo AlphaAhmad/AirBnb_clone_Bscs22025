@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "../css files/card.css"
 import PropTypes from 'prop-types';
 
-function DisplayCard({ imageSrc,items}) {
+function DisplayCard({ imageSrc, items }) {
 
     const [imgimageSrc, setImgimageSrc] = useState('');
     const [listItems, setListItems] = useState([]);
@@ -14,19 +14,20 @@ function DisplayCard({ imageSrc,items}) {
         if (items) {
             setListItems(items);
         }
-    }, [imageSrc,items])
+    }, [imageSrc, items])
 
     return (
         <div className="card">
             <div className="display-img">
-                <img src={imgimageSrc} alt="no img found"/>
+                <img src={imgimageSrc} alt="no img found" />
             </div>
             <div className="cardInfo">
                 <ul>
-                    {listItems.map((item,index)=>
-                        <li key={index}>{item}</li>
+                    {listItems.map((item, index) =>
+                        <li key={index} className={index === 0 || index === 3 ? 'boldIt' : ''}>
+                            {item}
+                        </li>
                     )}
-                    
                 </ul>
             </div>
 

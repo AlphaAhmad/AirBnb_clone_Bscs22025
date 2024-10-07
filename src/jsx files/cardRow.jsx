@@ -9,15 +9,15 @@ function Card_row() {
     const card_data = [
         {
             imgSrc:'src/assets/images/mahelblashwar india.png',
-            items:['1','2','3','4'],
+            items:['Mahabaleshwar, India','Villa (Complete)','4 rooms with attached Sauna','$765 per night','4.5 star'],
         },
         {
             imgSrc:'src/assets/images/mahelblashwar india.png',
-            items:['1','2','3','4'],
+            items:['Mahabaleshwar, India','Villa (Complete)','4 rooms with attached Sauna','$765 per night','4.5 star'],
         },
         {
             imgSrc:'src/assets/images/mahelblashwar india.png',
-            items:['1','2','3','4'],
+            items:['Mahabaleshwar, India','Villa (Complete)','4 rooms with attached Sauna','$765 per night','4.5 star'],
         }
     ];
     const [data, setData] = useState([]);
