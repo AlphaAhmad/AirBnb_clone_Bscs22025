@@ -12,6 +12,6 @@ A front page clone of AirBnb with react as front-end and node-js as backend. (In
 
 ## Just clone the repo run command
 - npm run dev
-  and then open given url in browser
+and then open given url in browser
 
 ## Design Descisions
