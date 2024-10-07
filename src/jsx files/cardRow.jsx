@@ -1,5 +1,5 @@
 import DisplayCard from "./card.jsx"
-//import "../css files/cardsRow.css"
+import "../css files/cardsRow.css"
 import { useState, useEffect } from "react";
 
 
