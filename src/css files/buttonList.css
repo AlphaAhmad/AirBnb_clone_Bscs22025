@@ -9,6 +9,7 @@
 }
 
 .ScrollBtn {
+    display: none;
     height: 40px;
     width: 40px;
     border: 1px solid black;
@@ -24,20 +25,21 @@
     margin: 60px;
     justify-content: center;
     /* border settings */
-    border-width: 1px;
-    height: 80px;
-    width: 80px;
-    border-radius: 10px;
+    /* border-width: 1px;
+    min-height: 80px;
+    min-width: 80px;
+    border-radius: 10px; */
 }
 
 .scroleableList {
     display: flex;
-    /* width: 60vw; */
+    width: 55vw;
     /* justify-content: center; */
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    overflow-x: auto;
+    scroll-behavior:inherit smooth;
+    scrollbar-width:thin;
+    overflow-x: scroll;
     position: relative;
+
 }
 
 .scrollablelist::-webkit-scrollbar {
@@ -47,4 +49,11 @@
 
 .scroleableList img {
     width: 40px;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 767px) {
+    .scroleableList {
+        width:90vw
+    }
 }

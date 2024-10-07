@@ -25,7 +25,7 @@
     cursor: pointer;
     font-size: large;
     padding-right: 4vw; /* Space between items */
-    transition: font-size 0.1s ease-in-out;
+    transition: color 0.1s ease-in-out;
 }
 
 .dropdown-content p{
@@ -73,9 +73,10 @@
 
 /* Animations */
 .nav_options li:hover {
-    font-size: larger;
+    color: red;
+    /* font-size: larger;
     position: relative;
-    overflow: hidden;
+    overflow: hidden; */
 }
 
 .loginImg:hover{

@@ -29,31 +29,31 @@ function ButtonList() {
             </button>
             <div className="scroleableList">
                 <button>
-                    <img src={imgs[0]} alt="" />
+                    <img src={imgs[0]} alt="no img found" />
                     Beachfront
                 </button>
                 <button>
-                    <img src={imgs[1]} alt="" />
+                    <img src={imgs[1]} alt="no img found" />
                     Camping
                 </button>
                 <button>
-                    <img src={imgs[2]} alt="" />
+                    <img src={imgs[2]} alt="no img found" />
                     Desert
                 </button>
                 <button>
-                    <img src={imgs[3]} alt="" />
+                    <img src={imgs[3]} alt="no img found" />
                     Windmills
                 </button>
                 <button>
-                    <img src={imgs[4]} alt="" />
+                    <img src={imgs[4]} alt="no img found" />
                     Towers
                 </button>
                 <button>
-                    <img src={imgs[5]} alt="" />
+                    <img src={imgs[5]} alt="no img found" />
                     Boats
                 </button>
                 <button>
-                    <img src={imgs[6]} alt="" />
+                    <img src={imgs[6]} alt="no img found" />
                     Barns
                 </button>
             </div>
