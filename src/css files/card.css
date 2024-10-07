@@ -1,0 +1,19 @@
+.card{
+    /* display: flex;
+    flex-direction: column; */
+    /* remove below when making a row of cards */
+    align-items: center; 
+
+}
+
+.display-img{
+    width:470px;
+}
+
+.display-img img{
+    border-radius: 20px;
+}
+
+.cardInfo{
+    
+}
