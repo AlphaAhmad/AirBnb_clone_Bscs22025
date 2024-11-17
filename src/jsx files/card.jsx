@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom"
 import "../css files/card.css"
 import PropTypes from 'prop-types';
 
@@ -30,14 +31,14 @@ function DisplayCard({ imageSrc, items }) {
                     )}
                 </ul>
             </div>
-
+            <Link to="/BookingPage"><button>BOOK IT</button></Link>
         </div>
 
     );
 
 }
 
-// Define propTypes to validate the props
+// Define propTypes to validate the props   
 DisplayCard.propTypes = {
     imageSrc: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(PropTypes.string).isRequired,

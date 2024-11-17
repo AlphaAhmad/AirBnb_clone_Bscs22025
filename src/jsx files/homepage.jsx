@@ -4,7 +4,7 @@ import ButtonList from './buttonlist.jsx';
 import "../css files/buttonList.css"
 import Card_row from './cardRow.jsx';
 import Footer from './footer.jsx'
-function Website() {
+function Homepage() {
     return (
         <>
             <Navbar/>
@@ -17,4 +17,4 @@ function Website() {
         </>
     )
 }
-export default Website; 
+export default Homepage; 

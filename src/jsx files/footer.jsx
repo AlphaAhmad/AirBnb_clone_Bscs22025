@@ -22,7 +22,7 @@ function Footer() {
             </ul>
             <ul className="contact-menu">
                 <li className="menu-item"><a className="menu__link" href="#">Support</a></li>
-                <li className="menu-item"><a className="menu__link" href="#">About</a></li>
+                <li className="menu-item">About<a className="menu__link" href="#"></a></li>
                 <li className="menu-item"><a className="menu__link" href="#">Hosting</a></li>
                 {/* <li className="menu-item"><a className="menu__link" href="#">Team</a></li>
                 <li className="menu-item"><a className="menu__link" href="#">Contact</a></li> */}
