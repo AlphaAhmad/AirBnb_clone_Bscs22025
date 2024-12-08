@@ -8,7 +8,7 @@
 }
 
 .display-img{
-    width:520px;
+    width:450px;
 }
 
 .display-img img{
@@ -25,11 +25,20 @@
     font-weight: bold;
 }
 
+.BookBtn
+{
+    margin-top: 10px;   
+    padding: 3px;
+    border: 2px;
+    border-radius: 10px;
+    border-style:solid;
+}
+
 /* animations */
 
-.card:hover{
+.BookBtn:hover{
     /* width: 300px; */
-    color:brown;
+    background-color:brown;
 }
 
 

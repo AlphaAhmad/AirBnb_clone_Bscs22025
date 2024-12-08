@@ -7,6 +7,7 @@ function DisplayCard({ imageSrc, items }) {
 
     const [imgimageSrc, setImgimageSrc] = useState('');
     const [listItems, setListItems] = useState([]);
+
     useEffect(() => {
         // if source is not empty
         if (imageSrc) {
@@ -15,7 +16,12 @@ function DisplayCard({ imageSrc, items }) {
         if (items) {
             setListItems(items);
         }
-    }, [imageSrc, items])
+    }, [imageSrc, items]);
+
+    const SendCardItemID = () => {
+
+        return 0;
+    }
 
     return (
         <div className="card">
@@ -31,7 +37,7 @@ function DisplayCard({ imageSrc, items }) {
                     )}
                 </ul>
             </div>
-            <Link to="/BookingPage"><button>BOOK IT</button></Link>
+            <Link to="/BookingPage" onClick={SendCardItemID}><button className="BookBtn">BOOK IT</button></Link>
         </div>
 
     );
