@@ -26,13 +26,15 @@ function BookingForm()
         e.preventDefault(); // prevent default data submission
 
         try{
+            // data is being received here without any problem
+            console.log(formData);
             const response = axios.post("http://localhost:3000/Booking",formData);
-            if(response.status === 201)
+            if(response.status === 404)
             {
-                alert("Booking successfully saved!");
+                alert("Failed to save booking");
             }
             else{
-                alert("Failed to save booking");
+                alert("Booking successfully saved!");
             }
         }
         catch(error){
