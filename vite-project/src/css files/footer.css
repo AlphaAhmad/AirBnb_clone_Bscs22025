@@ -1,0 +1,70 @@
+.footer {
+    background-color: var(--background-color);
+    width: 100vw;
+    height: 30px auto;
+    font-family: "Poppins", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    min-height: 240px;
+    text-align: center;
+    align-content: center;
+    margin-top:5vh;
+    /* flex-direction: column; */
+}
+/* ++++++++++++++++ classes type css +++++++++++++++++++*/
+
+.contact-menu {
+    display: inline-flex;
+    list-style: none;
+    font-size: 20px;
+}
+
+.menu-item {
+    font-family: "Merriweather", serif;
+    display: inline-block;
+    width: 60px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+
+.menu-item:hover {
+    font-weight: bold;
+}
+
+.social-icon__item {
+    display: inline-block;
+    margin: 40px;
+    list-style: none;
+}
+
+.whatsapp {
+    height: 53px;
+    transition: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+
+.facebook {
+    height: 50px;
+    transition: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+
+.insta {
+    height: 55px;
+    transition: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+
+.whatsapp:hover {
+    transform: translateY(-13px);
+}
+
+.facebook:hover {
+    transform: translateY(-13px);
+}
+
+.insta:hover {
+    transform: translateY(-13px);
+}

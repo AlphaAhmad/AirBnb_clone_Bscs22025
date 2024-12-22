@@ -1,0 +1,59 @@
+.buttonsContainer {
+    display: inline-flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    margin-top: 5px;
+}
+
+.ScrollBtn {
+    display: none;
+    height: 40px;
+    width: 40px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+.scroleableList button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 60px;
+    justify-content: center;
+    /* border settings */
+    /* border-width: 1px;
+    min-height: 80px;
+    min-width: 80px;
+    border-radius: 10px; */
+}
+
+.scroleableList {
+    display: flex;
+    width: 55vw;
+    /* justify-content: center; */
+    scroll-behavior:inherit smooth;
+    scrollbar-width:thin;
+    overflow-x: scroll;
+    position: relative;
+
+}
+
+.scrollablelist::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Edge */
+}
+
+.scroleableList img {
+    width: 40px;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 767px) {
+    .scroleableList {
+        width:90vw
+    }
+}
