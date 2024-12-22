@@ -1,9 +1,0 @@
-.Row{
-    display:flex;
-    justify-content: space-between;
-    align-items:center;
-    margin-inline:5vw;
-    margin-top: 30px;
-    overflow-x: auto;
-    scrollbar-width:thin;
-}
