@@ -1,9 +1,10 @@
 import "../css files/nav.css"
 import { useState } from "react";
+import { Link } from "react-router-dom"
 
 // TODO: make the toggle function of login image cancel when click on anywhere other then the image
 
-function Navbar() {
+function Navbar() { 
 
     const [isOpen, set_isOpen] = useState(false);
 
@@ -21,8 +22,8 @@ function Navbar() {
             />
             <div className="inMobilePrll">
                 <ul className="nav_options">
-                    <li>HOME</li>
-                    <li>STAYS</li>
+                    <li><Link to="/">HOME</Link></li>
+                    <li>STAYS</li> 
                     <li>EXPERIENCES</li>
                 </ul>
                 <div className="dropdown">

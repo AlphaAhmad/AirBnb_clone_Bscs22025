@@ -34,8 +34,8 @@ function Card_row() {
 
     return (
         <div className="Row">
-            {data.map((data_to_pass, index) => (
-                <DisplayCard key={index} imageSrc={data_to_pass.imgSrc} items={data_to_pass.items} />
+            {data.map((data_to_pass, index) => ( // TODO: check if this list is working fine
+                <DisplayCard key={index}  _Id={data_to_pass.id} imageSrc={data_to_pass.imgSrc} items={data_to_pass.items} />
             ))
             }
         </div>

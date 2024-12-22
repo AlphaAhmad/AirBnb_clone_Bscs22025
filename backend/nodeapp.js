@@ -9,20 +9,24 @@ const PORT = 3000;
 // hard coded local database
 const card_data = [
     {
-        id:1,
+        id:'1',
         imgSrc:'src/assets/images/mahelblashwar india.png',
         items:['Mahabaleshwar, India','Villa (Complete)','4 rooms with attached Sauna','$765 per night','4.5 star'],
+        detail:"Indulge in a luxurious stay at this stunning villa in Mahabaleshwar, India. With 4 rooms and attached saunas, this property offers a perfect getaway for families or groups of friends. Enjoy the comfort and elegance of this 4.5-star accommodation for just $765 per night."
     },
     {
-        id:2,
+        id:'2',
         imgSrc:'src/assets/images/mahelblashwar india.png',
         items:['PC hotel, Pakistan','One Room','1 rooms with attached bath','$65 per night','4.3 star'],
+        detail:"Looking for a budget-friendly stay in Pakistan? The PC hotel offers a comfortable one-room option with an attached bath. Enjoy a convenient location at just $65 per night and experience a 4.3-star rated stay."
     },
     {
-        id:3,
+        id:'3',
         imgSrc:'src/assets/images/mahelblashwar india.png',
         items:['Naran Villa, Pakistan','Villa (Complete)','4 rooms with attached Sauna','$565 per night','4.5 star'],
+        detail:"Looking for a budget-friendly stay in Pakistan? The PC hotel offers a comfortable one-room option with an attached bath. Enjoy a convenient location at just $65 per night and experience a 4.3-star rated stay."
     }
+
 ];
 
 const bookings = [] // database for saving Booking form submissions
@@ -110,7 +114,8 @@ app.get("/booking/listing", (req,res)=>
 app.get("/api/listing/:id",(req,res)=>
     {   
         try{
-            const _id = parseInt(req.params.id);// getting id in the request
+            // const _id = parseInt(req.params.id);// getting id in the request
+            const _id = req.params.id; // `id` from request params is already a string
             const card = card_data.find((c)=>c.id === _id); // c is iterator
             if(!card)
             {
@@ -120,6 +125,8 @@ app.get("/api/listing/:id",(req,res)=>
         }   
         catch{
             // FOR MongoDB when i will add it...
+            console.error("Error in fetching card data:", error);
+            res.status(500).json({ error: "Internal Server Error" });
         }
     }
 )
