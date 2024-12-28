@@ -19,7 +19,7 @@ function BookingForm()
         }));
     };
     
-
+    
     // form submission handeling (this should be done asynchronously)
     const handleSubmit = async (e)=>
     {

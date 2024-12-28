@@ -6,7 +6,6 @@ import axios from "axios"
 
 function Card_row() {
 
-    // const card_data = [
     //     {
     //         imgSrc:'src/assets/images/mahelblashwar india.png',
     //         items:['Mahabaleshwar, India','Villa (Complete)','4 rooms with attached Sauna','$765 per night','4.5 star'],
