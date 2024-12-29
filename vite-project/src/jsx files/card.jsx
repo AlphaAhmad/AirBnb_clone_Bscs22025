@@ -77,8 +77,8 @@ function DisplayCard({ _Id, imageSrc, housename, Bedrooms, Rate }) {
                 <div className="cardInfo">
                     <ul>
                         <b><li>{housename}</li></b>
-                        <li>{Bedrooms}</li>
-                        <li>{Rate}</li>
+                        <li>Bedrooms: {Bedrooms}</li>
+                        <li><b>${Rate} /</b> Night</li>
                     </ul>
                 </div>
                 <Link to={`/BookingPage/${_Id}`}>

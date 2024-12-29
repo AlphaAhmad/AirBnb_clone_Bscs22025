@@ -63,6 +63,25 @@ HomeAddRouter.post("/getall", async (req, res) => {
 }
 )
 
+HomeAddRouter.get("/:id", async (req, res) => {
+    try {
+        // const _id = parseInt(req.params.id);// getting id in the request
+        const _id = req.params.id; // `id` from request params is already a string
+        //const card = card_data.find((c) => c.id === _id); // c is iterator
+        const Required_Room = await HouseData.findById({_id})
+        if (!Required_Room) {
+            return res.status(404).json({ error: "Card not found" });
+        }
+        return res.json(Required_Room);
+    }
+    catch {
+        // FOR MongoDB when i will add it...
+        console.error("Error in fetching card data:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+)
+
 
 
 export default HomeAddRouter;

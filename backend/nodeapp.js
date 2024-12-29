@@ -8,7 +8,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import UserAuthRouter from "./routes/UserAuthRoutes.js";
 import HomeAddRouter from "./routes/AddHouseRoutes.js";
-import HouseData from "./models/HousesSchema.js";
+import BookingRouter from "./routes/BookFormRoutes.js";
 const app = express();
 const PORT = 3000;
 
@@ -42,10 +42,6 @@ const card_data = [
     }
 
 ];
-
-// {
-//     Housename : 
-// };
 
 const bookings = [] // database for saving Booking form submissions
 
@@ -107,6 +103,7 @@ app.get("/", (req, res) => {
 // Redirecting Routes
 app.use("/user/auth",UserAuthRouter);
 app.use("/addhouse",HomeAddRouter);
+app.use("/Booking",BookingRouter);
 //+++++++++++++++++++++++++++++++++++++++++++++++++++
 //Current code is working on local database (cards array) right now 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -114,16 +111,16 @@ app.use("/addhouse",HomeAddRouter);
 
 
 // Route to get all cards
-app.get("/api/listing", (req, res) => {
-    try {
-        res.json(card_data);
-    }
-    catch {
-        // this is for MongoDB.. when it will be added 
-        return res.status(500).json({ error: "Failed to fetch data" });
-    }
-}
-);
+// app.get("/api/listing", (req, res) => {
+//     try {
+//         res.json(card_data);
+//     }
+//     catch {
+//         // this is for MongoDB.. when it will be added 
+//         return res.status(500).json({ error: "Failed to fetch data" });
+//     }
+// }
+// );
 
 app.get("/booking/listing", (req, res) => {
     try {
@@ -139,24 +136,24 @@ app.get("/booking/listing", (req, res) => {
 
 // route for page where user has reached after selecting a room in homepage
 // Route to get a single item by ID
-app.get("/api/listing/:id", (req, res) => {
-    try {
-        // const _id = parseInt(req.params.id);// getting id in the request
-        const _id = req.params.id; // `id` from request params is already a string
-        //const card = card_data.find((c) => c.id === _id); // c is iterator
-        const Required_Room = HouseData.findById({_id})
-        if (!card) {
-            return res.status(404).json({ error: "Card not found" });
-        }
-        return res.json(card);
-    }
-    catch {
-        // FOR MongoDB when i will add it...
-        console.error("Error in fetching card data:", error);
-        res.status(500).json({ error: "Internal Server Error" });
-    }
-}
-)
+// app.get("/api/listing/:id", (req, res) => {
+//     try {
+//         // const _id = parseInt(req.params.id);// getting id in the request
+//         const _id = req.params.id; // `id` from request params is already a string
+//         //const card = card_data.find((c) => c.id === _id); // c is iterator
+//         const Required_Room = HouseData.findById({_id})
+//         if (!card) {
+//             return res.status(404).json({ error: "Card not found" });
+//         }
+//         return res.json(card);
+//     }
+//     catch {
+//         // FOR MongoDB when i will add it...
+//         console.error("Error in fetching card data:", error);
+//         res.status(500).json({ error: "Internal Server Error" });
+//     }
+// }
+// )
 
 
 // post request to save booking data

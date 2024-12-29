@@ -4,13 +4,10 @@ import { useEffect, useState } from 'react';
 function ButtonList() {
 
     const paths = [
-        'src/assets/images/boat.png',
-        'src/assets/images/boat.png',
-        'src/assets/images/boat.png',
-        'src/assets/images/boat.png',
-        'src/assets/images/boat.png',
-        'src/assets/images/boat.png',
-        'src/assets/images/boat.png',
+        '/public/BeachLogo.jpg',
+        '/public/MansionLogo.jpg',
+        '/public/CabinLogo.jpg',
+        '/public/GuestHouse.jpg',
     ];
 
     const [imgs, setImgs] = useState([]); // initializing an empty array in the start
@@ -21,7 +18,6 @@ function ButtonList() {
         setImgs(LoadImages);
     }, []);
 
-
     return (
         <div className="buttonsContainer">
             <button onClick={() => scroll(-150)} className='ScrollBtn'>
@@ -30,31 +26,19 @@ function ButtonList() {
             <div className="scroleableList">
                 <button>
                     <img src={imgs[0]} alt="no img found" />
-                    Beachfront
+                    Beachfronts
                 </button>
                 <button>
                     <img src={imgs[1]} alt="no img found" />
-                    Camping
+                    Mansions
                 </button>
                 <button>
                     <img src={imgs[2]} alt="no img found" />
-                    Desert
+                    Cabins
                 </button>
                 <button>
                     <img src={imgs[3]} alt="no img found" />
-                    Windmills
-                </button>
-                <button>
-                    <img src={imgs[4]} alt="no img found" />
-                    Towers
-                </button>
-                <button>
-                    <img src={imgs[5]} alt="no img found" />
-                    Boats
-                </button>
-                <button>
-                    <img src={imgs[6]} alt="no img found" />
-                    Barns
+                    Guest Houses
                 </button>
             </div>
             <button onClick={() => scroll(150)} className='ScrollBtn'>

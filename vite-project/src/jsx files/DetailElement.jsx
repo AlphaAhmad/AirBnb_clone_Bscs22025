@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import "../css files/detailElement.css"
 
 function Detail() {
     const { roomID } = useParams(); 
@@ -10,7 +11,7 @@ function Detail() {
     useEffect(() => {
         if (roomID) {
             console.log(`Room ID is ${roomID}`);
-            axios.get(`http://localhost:3000/api/listing/${roomID}`)
+            axios.get(`http://localhost:3000/addhouse/${roomID}`)
                 .then((response) => {
                     console.log("API Response:", response.data);
                     setRoomDetails(response.data);
@@ -24,7 +25,7 @@ function Detail() {
     }, [roomID]);
 
     if (!roomDetails) {
-        return <div>Loading room details...</div>;
+        return <div>Room Details received null...</div>;
     }
 
     return (

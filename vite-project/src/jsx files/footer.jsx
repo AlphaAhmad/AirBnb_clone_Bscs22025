@@ -6,17 +6,17 @@ function Footer() {
             <ul className="social-icon">
                 <li className="social-icon__item">
                     <a href="https://wa.me/+923426000035" className="social-icon_link">
-                        <img src="src\assets\images\whatsapp (2).png" alt="WhatsApp Logo" className="whatsapp" />
+                        <img src="/public/whatsapp (2).png" alt="WhatsApp Logo" className="whatsapp" />
                     </a>
                 </li>
                 <li className="social-icon__item">
                     <a href="https://www.facebook.com/AlphaAhmad.01/" className="social-icon_link">
-                        <img src="src\assets\images\facebook2.png" alt="Facebook Logo" className="facebook" />
+                        <img src="/public/facebook2.png" alt="Facebook Logo" className="facebook" />
                     </a>    
                 </li>
                 <li className="social-icon__item">
                     <a href="" className="social-icon_link">
-                        <img src="src\assets\images\instagram2.png" alt="Instagram Logo" className="insta" />
+                        <img src="/public/instagram2.png" alt="Instagram Logo" className="insta" />
                     </a>
                 </li>
             </ul>

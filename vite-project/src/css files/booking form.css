@@ -40,12 +40,13 @@ d
 #nightsToStay
 {
 border: 2px;
+border-width: 2px;
 border-style: solid;
 border-radius: 5px;
 box-shadow: 2px 2px 2px ;
-border-color:rgb(152, 169, 169);
-margin-bottom: 20px;
-padding: 2px;
+border-color:rgb(28, 131, 131);
+margin-bottom: 30px;
+padding: 5px;
 }
 
 h1{
@@ -60,11 +61,35 @@ border: 2px;
 border-style: solid;
 border-radius: 10px;
 box-shadow: 2px 2px 2px ;
-width:7vw;
-height: 37px;
+min-width:50px;     
+height: 57px;   
+margin-top: 5px;
 }
 
 .SubButton:hover
 {
     background-color: brown;
+    color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .BookForm {
+        min-width: 65%;
+        margin-left: 0px;
+        margin: 2vh; /* Adjust margins for smaller devices */
+        font-size: medium;
+        min-height: 400px;   
+        font-size: smaller;
+    }
+
+    h1 {
+        font-size: medium; /* Adjust font size for smaller screens */
+    }
+
+    .SubButton {
+        font-size: smaller; /* Adjust button text size */
+        min-width: 50px;
+        min-height: 50px;
+    }
 }
