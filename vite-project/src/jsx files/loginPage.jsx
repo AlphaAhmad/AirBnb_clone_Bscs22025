@@ -1,7 +1,8 @@
 import { useState, } from "react";
 // import { useNavigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import "../css/login.css"   
+// import { Navigate } from "react-router-dom";
+import "../css files/login.css"   
 import axios from "axios"
 
 function LoginForm() {  
@@ -10,7 +11,7 @@ function LoginForm() {
     const nave = useNavigate();
     const [formData,setFormData] = useState(
         {
-            name:"",
+            username:"",
             password:"",
         }
     )
@@ -34,7 +35,7 @@ function LoginForm() {
             try{
                 //data is being received here without any problem
                 console.log(formData);
-                const response = await axios.post("http://localhost:3000/auth/login",formData);
+                const response = await axios.post("http://localhost:3000/user/auth/login",formData);
                 if(response.status === 400)
                 {
                     alert("Error 400: Your credentials are not right")
@@ -58,12 +59,13 @@ function LoginForm() {
             <form className="BookForm" onSubmit={handleSubmit}>
                 <h1>Login</h1>
                 <label htmlFor="name">Name</label>
-                <input id="name" name="name" type="text" required value={formData.name} onChange={changeCreadentials} />
+                <input id="name" name="username" type="text" required value={formData.username} onChange={changeCreadentials} />
 
                 <label htmlFor="password">Password</label>
                 <input id="password" name="password" type="password" required value={formData.password} onChange={changeCreadentials} />
 
                 <button className="SubButton" type="submit">Login</button>
+                {/* <button className="SubButton" type ="reset" onClick={<Navigate to="/signup"/>}>SignUp Page</button> */}
             </form>
         </>
     )   

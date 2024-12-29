@@ -7,6 +7,8 @@ import cors from "cors"
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import UserAuthRouter from "./routes/UserAuthRoutes.js";
+import HomeAddRouter from "./routes/AddHouseRoutes.js";
+import HouseData from "./models/HousesSchema.js";
 const app = express();
 const PORT = 3000;
 
@@ -22,24 +24,28 @@ dotenv.config();
 const card_data = [
     {
         id: '1',
-        imgSrc: 'src/assets/images/mahelblashwar india.png',
+        imgSrc: '/public/Guest-House-Museum, Alaska.jpg',
         items: ['Mahabaleshwar, India', 'Villa (Complete)', '4 rooms with attached Sauna', '$765 per night', '4.5 star'],
         detail: "Indulge in a luxurious stay at this stunning villa in Mahabaleshwar, India. With 4 rooms and attached saunas, this property offers a perfect getaway for families or groups of friends. Enjoy the comfort and elegance of this 4.5-star accommodation for just $765 per night."
     },
     {
         id: '2',
-        imgSrc: 'src/assets/images/mahelblashwar india.png',
+        imgSrc: '/public/mahelblashwar india.png',
         items: ['PC hotel, Pakistan', 'One Room', '1 rooms with attached bath', '$65 per night', '4.3 star'],
         detail: "Looking for a budget-friendly stay in Pakistan? The PC hotel offers a comfortable one-room option with an attached bath. Enjoy a convenient location at just $65 per night and experience a 4.3-star rated stay."
     },
     {
         id: '3',
-        imgSrc: 'src/assets/images/mahelblashwar india.png',
+        imgSrc: '/public/mahelblashwar india.png',
         items: ['Naran Villa, Pakistan', 'Villa (Complete)', '4 rooms with attached Sauna', '$565 per night', '4.5 star'],
         detail: "Looking for a budget-friendly stay in Pakistan? The PC hotel offers a comfortable one-room option with an attached bath. Enjoy a convenient location at just $65 per night and experience a 4.3-star rated stay."
     }
 
 ];
+
+// {
+//     Housename : 
+// };
 
 const bookings = [] // database for saving Booking form submissions
 
@@ -98,7 +104,9 @@ app.get("/", (req, res) => {
     res.send("Welcome to Your Project!");
 });
 
-
+// Redirecting Routes
+app.use("/user/auth",UserAuthRouter);
+app.use("/addhouse",HomeAddRouter);
 //+++++++++++++++++++++++++++++++++++++++++++++++++++
 //Current code is working on local database (cards array) right now 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -135,7 +143,8 @@ app.get("/api/listing/:id", (req, res) => {
     try {
         // const _id = parseInt(req.params.id);// getting id in the request
         const _id = req.params.id; // `id` from request params is already a string
-        const card = card_data.find((c) => c.id === _id); // c is iterator
+        //const card = card_data.find((c) => c.id === _id); // c is iterator
+        const Required_Room = HouseData.findById({_id})
         if (!card) {
             return res.status(404).json({ error: "Card not found" });
         }
@@ -170,6 +179,5 @@ app.listen(PORT, () => {
 });
 
 
-// Redirecting Routes
-app.use("/user/auth",UserAuthRouter);
+
 

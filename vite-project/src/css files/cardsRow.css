@@ -1,9 +1,10 @@
-.Row{
-    display:flex;
+.Row {
+    display: flex;
+    /* If row gets full with cards move them to next row*/
+    flex-wrap: wrap; 
     justify-content: space-between;
-    align-items:center;
-    margin-inline:5vw;
+    align-items: center;
+    gap: 20px; /*  Adds space between rows and columns */
+    margin-inline: 5vw;
     margin-top: 30px;
-    overflow-x: auto;
-    scrollbar-width:thin;
 }

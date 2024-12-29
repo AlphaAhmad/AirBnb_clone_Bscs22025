@@ -22,19 +22,20 @@ function Card_row() {
     const [data, setData] = useState([]);
     useEffect(() => {
         // sending api request to backend to get all the cards info from database
-        axios.get("http://localhost:3000/api/listing")
-        .then((response)=>
-        {
-            console.log(response.data)
-            setData(response.data); 
-        })
-        .catch((error) => console.error("Error fetching data:", error));
+        axios.get("http://localhost:3000/addhouse/getall")
+            .then((response) => {
+                console.log(response.data)
+                setData(response.data);
+            })
+            .catch((error) => console.error("Error fetching data:", error));
     }, [])
+
+    console.log(`data_to_pass: ${data[0]?.Housename}`)
 
     return (
         <div className="Row">
             {data.map((data_to_pass, index) => ( // TODO: check if this list is working fine
-                <DisplayCard key={index}  _Id={data_to_pass.id} imageSrc={data_to_pass.imgSrc} items={data_to_pass.items} />
+                <DisplayCard key={index} _Id={data_to_pass._id} imageSrc={data_to_pass.imgSrc} housename={data_to_pass.Housename} Bedrooms={data_to_pass.Bedrooms} Rate={data_to_pass.Rate} />
             ))
             }
         </div>

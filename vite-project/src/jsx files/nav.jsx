@@ -17,7 +17,7 @@ function Navbar() {
         <nav className="Nav">
             <img
                 className="logo" // Set logo size with responsive adjustments
-                src="src/assets/images/airbnb-2-logo-png-transparent.png"
+                src="/public/airbnb-2-logo-png-transparent.png"
                 alt="Airbnb Logo"
             />
             <div className="inMobilePrll">
@@ -28,7 +28,7 @@ function Navbar() {
                 </ul>
                 <div className="dropdown">
                     <img className="loginImg"
-                        src="src\assets\images\login icon.png"
+                        src="/public/login icon.png"
                         alt="Login img not found"
                         onClick={toggleDropDown} />
                     {/* here isOpen is checker wheather its true or false, if true then class show is added in the div else nothing is added and show class has css property of display:block */}

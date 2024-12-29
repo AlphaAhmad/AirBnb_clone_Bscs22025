@@ -4,40 +4,45 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Detail() {
-    const { roomID } = useParams(); // get ID, being passed from the URL
-    const [roomDetails, setRoomDetails] = useState([]);
+    const { roomID } = useParams(); 
+    const [roomDetails, setRoomDetails] = useState(null); // Use `null` as the initial state
+
     useEffect(() => {
         if (roomID) {
-            console.log(`Room ID is ${roomID}`)
+            console.log(`Room ID is ${roomID}`);
             axios.get(`http://localhost:3000/api/listing/${roomID}`)
-                .then((Response) => {
-                    console.log(Response.data)
-                    setRoomDetails(Response.data)
-                }).catch((error) => {
+                .then((response) => {
+                    console.log("API Response:", response.data);
+                    setRoomDetails(response.data);
+                })
+                .catch((error) => {
                     console.error("Error fetching data:", error);
                 });
-        }
-        else {
+        } else {
             console.error("roomID is null");
         }
-    },[roomID]) // only run when roomID changes
+    }, [roomID]);
 
     if (!roomDetails) {
-        return <div>No room details available.</div>;
+        return <div>Loading room details...</div>;
     }
 
     return (
         <>
             <div className="ImgAndName">
-                <div className="Thumbnail"><img src={roomDetails.imgSrc} alt="No Image found" /></div>
-                <h1>{roomDetails.items?.[0]}</h1>   
+                <div className="Thumbnail">
+                    <img
+                        // src={roomDetails.imgSrc || "/placeholder-image.jpg"}
+                        // alt={roomDetails.items?.[0] || "Room thumbnail"}
+                        src={roomDetails.imgSrc}
+                    />
+                </div>
+                <h1>{roomDetails.Housename}</h1>
             </div>
-            <p>
-                {roomDetails.detail}
-            </p>
+            <p>{roomDetails.desc}</p>
         </>
     );
-};
+}
 
 
 // Define propTypes to validate the props   

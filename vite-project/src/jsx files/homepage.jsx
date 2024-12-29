@@ -11,7 +11,7 @@ function Homepage() {
             <SearchBar />
             <ButtonList/>
             <Card_row/>
-            <Card_row/>
+            {/* <Card_row/> */}
             {/* TODO: Pass data to card row dynamically from website.jsx*/}
             <Footer/>
         </>

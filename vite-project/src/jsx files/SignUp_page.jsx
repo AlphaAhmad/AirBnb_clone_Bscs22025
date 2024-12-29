@@ -1,6 +1,7 @@
 import { useState, } from "react";
 // import { useNavigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 import "../css files/login.css"
 import axios from "axios"
 
@@ -10,7 +11,7 @@ function SignUp() {
     const nave = useNavigate();
     const [formData,setFormData] = useState(
         {
-            name:"",
+            username:"",
             password:"",
         }
     )
@@ -34,7 +35,7 @@ function SignUp() {
             try{
                 //data is being received here without any problem
                 console.log(formData);
-                const response = await axios.post("http://localhost:3000/auth/login",formData);
+                const response = await axios.post("http://localhost:3000/user/auth/signup",formData);
                 if(response.status === 400)
                 {
                     alert("Error 400: Your credentials are not right")
@@ -42,7 +43,7 @@ function SignUp() {
                 }
                 else{
                     alert("Login credentials found")
-                    nave("/Tasks");
+                    nave("/");
                 }
             }
             catch(error){
@@ -57,12 +58,13 @@ function SignUp() {
             <form className="BookForm" onSubmit={handleSubmit}>
                 <h1>SignUp</h1>
                 <label htmlFor="name">Name</label>
-                <input id="name" name="name" type="text" required value={formData.name} onChange={changeCreadentials} />
+                <input id="name" name="username" type="text" required value={formData.username} onChange={changeCreadentials} />
 
                 <label htmlFor="password">Password</label>
                 <input id="password" name="password" type="password" required value={formData.password} onChange={changeCreadentials} />
 
                 <button className="SubButton" type="submit">SignUp</button>
+                {/* <button className="SubButton" type ="button" onClick={<Navigate to="/login"/>}>Login Page</button> */}
             </form>
         </>
     )   
