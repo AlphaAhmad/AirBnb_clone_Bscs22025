@@ -84,5 +84,23 @@ HomeAddRouter.get("/:id", async (req, res) => {
 )
 
 
+HomeAddRouter.delete("/delete/:id", async (req, res) => {
+    try {
+        const _id = req.params.id; // `id` from request params is already a string
+        const deletedRoom = await HouseData.findByIdAndDelete(_id);
+        
+        if (!deletedRoom) {
+            return res.status(404).json({ error: "House not found" });
+        }
+        
+        return res.json({ message: "House deleted successfully", deletedRoom });
+    }
+    catch (error) {
+        console.error("Error in deleting house data:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+
 
 export default HomeAddRouter;
