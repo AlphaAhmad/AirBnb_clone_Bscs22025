@@ -21,6 +21,7 @@
     "mongoose": "^8.9.2",
     "moongoose": "^0.0.1",
     "nodemon": "^3.1.7",
+    "react-hot-toast": "^2.4.1",
     "zustand": "^5.0.2"
   }
 }

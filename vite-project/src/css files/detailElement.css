@@ -1,13 +1,17 @@
+/* General Container for ImgAndName */
 .ImgAndName {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: center; /* Centers the child elements horizontally */
+    justify-content: center; /* Centers the child elements vertically */
+    text-align: center; /* Ensures text is centered */
     padding: 20px;
     margin: auto;
     max-width: 800px;
+    box-sizing: border-box; /* Ensures padding and border do not affect width */
 }
 
+/* Thumbnail Container */
 .Thumbnail {
     width: 100%;
     max-width: 400px;
@@ -17,28 +21,36 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Image Styling */
 .Thumbnail img {
     width: 100%;
     height: auto;
-    object-fit: contain;
+    object-fit: cover;
     display: block;
+    border-radius: 12px;
 }
 
+/* Heading Styling */
 h1 {
     font-size: 2rem;
     font-weight: bold;
     margin: 10px 0;
     color: #333;
+    text-transform: capitalize;
+    text-align: center; /* Ensure individual centering of the text */
 }
 
+/* Paragraph Styling */
 p {
     font-size: 1rem;
     line-height: 1.6;
     margin: 10px auto;
     max-width: 600px;
     color: #666;
+    text-align: center; /* Center the text within the container */
 }
 
+/* Responsive Styling for Mobile Devices */
 @media (max-width: 768px) {
     .ImgAndName {
         padding: 10px;

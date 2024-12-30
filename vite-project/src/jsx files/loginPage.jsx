@@ -1,13 +1,13 @@
 import { useState, } from "react";
-// import { useNavigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-// import { Navigate } from "react-router-dom";
 import "../css files/login.css"   
 import axios from "axios"
+import toast from "react-hot-toast"
+import { useAuthStore } from "../store/useAuthStore";
 
 function LoginForm() {  
 
-    
+    const[loading,setLoading] = useState(false);
     const nave = useNavigate();
     const [formData,setFormData] = useState(
         {
@@ -15,6 +15,8 @@ function LoginForm() {
             password:"",
         }
     )
+    const {setUser} = useAuthStore();
+
 
     const changeCreadentials = (e)=>
     {
@@ -33,26 +35,33 @@ function LoginForm() {
             e.preventDefault(); // prevent default data submission
     
             try{
+                setLoading(true)
                 //data is being received here without any problem
                 console.log(formData);
                 const response = await axios.post("http://localhost:3000/user/auth/login",formData);
                 if(response.status === 400)
                 {
-                    alert("Error 400: Your credentials are not right")
-                    nave("/login");
+                    toast.error("Error 400: Your credentials are not right")
+                    // nave("/login");
                 }
                 else{
-                    alert("Login credentials found")
-                    nave("/Tasks");
+                    toast.success("Login credentials found")
+                    setUser(response.data.returnedUser);
+                    localStorage.setItem("token",response.data.token)
+                    // nave("/");
                 }
             }
             catch(error){
                 console.error("Error",error);
-                alert("An error occured while checking your credentials!");
+                toast.error("ERROR 400: Your credentials are not right!!!");
+            }finally{
+                setLoading(false);
             }
-            
         }
 
+        const navToSignup = ()=>{
+            nave("/signup")
+        }
   
     return (
         <>
@@ -64,8 +73,8 @@ function LoginForm() {
                 <label htmlFor="password">Password</label>
                 <input id="password" name="password" type="password" required value={formData.password} onChange={changeCreadentials} />
 
-                <button className="SubButton" type="submit">Login</button>
-                {/* <button className="SubButton" type ="reset" onClick={<Navigate to="/signup"/>}>SignUp Page</button> */}
+                <button className="SubButton" disabled={loading} type="submit">{loading? "Loading...":"Log In"}</button>
+                <button className="SubButton" type ="reset" onClick={navToSignup}>SignUp Page</button>
             </form>
         </>
     )   

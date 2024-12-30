@@ -41,26 +41,55 @@ UserAuthRouter.post("/login", async (req, res) => {
     try{
         const {username,password} = req.body;
         // 1st check if the user exists or not
-        const returnedUser = User.findOne({username});
+        const returnedUser = await User.findOne({username});
+        
         if(!returnedUser)
         {
-            return res.status(400).send("User Not founf with provided username")
+            return res.status(400).send("User Not found with provided username")
         }
+        console.log(returnedUser)
+        console.log(1)
         const isPasswordCorrect = await bcrypt.compare(password,returnedUser.password);
+        console.log(2)
+        console.log(isPasswordCorrect)
         if(!isPasswordCorrect)
         {
             return res.status(400).send("Invalid Password")
         }
-
-        const token = jwt.sign({id:user._id}, process.env.JWT_SECRET,{expiresIn: "1h"})
-        return res.status(200).json(returnedUser)
+    
+        const token = jwt.sign({id:returnedUser._id}, process.env.JWT_SECRET,{expiresIn: "1h"})
+        return res.status(200).json({returnedUser,token})
     }
     catch(error)
     {
+        console.log(error)
         return res.status(400).send("something went wrong while logging in!")
     }
 }
-)
+);
+
+UserAuthRouter.get("/me",async (req,res)=>
+{
+    try{
+        const token = req.headers.authorization.split(" ")[1];
+        //  now decoding the received token from frontend
+        const decoded = jwt.verify(token,process.env.JWT_SECRET); 
+        console.log(decoded)
+        const isExpired = Date.now() >= decoded.exp*1000;
+
+        if(isExpired){
+            return res.status(401).send("Token Expired")
+        }
+
+        const user = await User.findById(decoded.id);
+        res.status(200).json({user});
+    }
+    catch(error)
+    {
+        console.log(error); 
+        res.status(400).send("Something went wrong");
+    };
+});
 
 
 
