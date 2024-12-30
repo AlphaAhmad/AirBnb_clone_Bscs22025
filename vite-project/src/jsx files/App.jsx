@@ -34,8 +34,6 @@ function App() {
                     }
                 }
             )
-            // console.log(`Reponce data is: ${res.data}`)
-            // console.log(`Reponce data user is: ${res.data.user}`)
             setUser(res.data.user);
         }
         catch(error){

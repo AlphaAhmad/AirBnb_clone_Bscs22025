@@ -1,16 +1,26 @@
 import "../css files/nav.css"
 import { useState } from "react";
 import { Link } from "react-router-dom"
-
+import { useAuthStore } from "../store/useAuthStore";
+import { useNavigate } from "react-router-dom";
 // TODO: make the toggle function of login image cancel when click on anywhere other then the image
 
 function Navbar() { 
 
     const [isOpen, set_isOpen] = useState(false);
+    const {setUser} = useAuthStore();
+    const nave = useNavigate();
 
     // Toggle Dropdown visibility
     const toggleDropDown = () => {
         set_isOpen(!isOpen)
+    }
+
+    const LogOut = ()=>
+    {
+        setUser(null);
+        localStorage.removeItem("token");
+        nave("/login");
     }
 
     return (
@@ -34,7 +44,7 @@ function Navbar() {
                     {/* here isOpen is checker wheather its true or false, if true then class show is added in the div else nothing is added and show class has css property of display:block */}
                     <div className={`dropdown-content ${isOpen ? 'show' : ''}`}>
                         <p style={{ fontWeight: "bold" }}>Sign Up</p>
-                        <p className="x">Login</p>
+                        <p className="x"><button onClick={LogOut}>Log Out</button></p>
                     </div>
                 </div>
             </div>
