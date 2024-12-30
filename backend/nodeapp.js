@@ -19,32 +19,6 @@ app.use(cors({
 dotenv.config();
 
 
-
-// hard coded local database
-const card_data = [
-    {
-        id: '1',
-        imgSrc: '/public/Guest-House-Museum, Alaska.jpg',
-        items: ['Mahabaleshwar, India', 'Villa (Complete)', '4 rooms with attached Sauna', '$765 per night', '4.5 star'],
-        detail: "Indulge in a luxurious stay at this stunning villa in Mahabaleshwar, India. With 4 rooms and attached saunas, this property offers a perfect getaway for families or groups of friends. Enjoy the comfort and elegance of this 4.5-star accommodation for just $765 per night."
-    },
-    {
-        id: '2',
-        imgSrc: '/public/mahelblashwar india.png',
-        items: ['PC hotel, Pakistan', 'One Room', '1 rooms with attached bath', '$65 per night', '4.3 star'],
-        detail: "Looking for a budget-friendly stay in Pakistan? The PC hotel offers a comfortable one-room option with an attached bath. Enjoy a convenient location at just $65 per night and experience a 4.3-star rated stay."
-    },
-    {
-        id: '3',
-        imgSrc: '/public/mahelblashwar india.png',
-        items: ['Naran Villa, Pakistan', 'Villa (Complete)', '4 rooms with attached Sauna', '$565 per night', '4.5 star'],
-        detail: "Looking for a budget-friendly stay in Pakistan? The PC hotel offers a comfortable one-room option with an attached bath. Enjoy a convenient location at just $65 per night and experience a 4.3-star rated stay."
-    }
-
-];
-
-const bookings = [] // database for saving Booking form submissions
-
 //+++++++++++++++++++++ Middle wares +++++++++++++++
 
 // Middleware to parse incoming JSON
@@ -73,23 +47,23 @@ mongoose.connection.on("error", (err) => {
 
 // dedicated 
 
-const ValidateBookingData = (req, res, next) => {
-    const _name = req.body.name;
-    const _idCardNumber = req.body.idCardNumber;
-    const _nightsToStay = req.body.nightsToStay;
+// const ValidateBookingData = (req, res, next) => {
+//     const _name = req.body.name;
+//     const _idCardNumber = req.body.idCardNumber;
+//     const _nightsToStay = req.body.nightsToStay;
 
-    if (!_name || !_idCardNumber || !_nightsToStay) {
-        return res.status(400).json({ error: "input data is empty" });
-    }
-    else if (_nightsToStay === 0) {
-        return res.status(400).json({ error: "Number of Nights cant be zero" });
-    }
-    else {
-        console.log("No problem in form input data")
-        next();
-    }
+//     if (!_name || !_idCardNumber || !_nightsToStay) {
+//         return res.status(400).json({ error: "input data is empty" });
+//     }
+//     else if (_nightsToStay === 0) {
+//         return res.status(400).json({ error: "Number of Nights cant be zero" });
+//     }
+//     else {
+//         console.log("No problem in form input data")
+//         next();
+//     }
 
-};
+// };
 
 
 // TODO: Join with MongoDB 
@@ -122,16 +96,16 @@ app.use("/Booking",BookingRouter);
 // }
 // );
 
-app.get("/booking/listing", (req, res) => {
-    try {
-        res.json(bookings);
-    }
-    catch {
-        // this is for MongoDB.. when it will be added 
-        return res.status(500).json({ error: "Failed to fetch data" });
-    }
-}
-);
+// app.get("/booking/listing", (req, res) => {
+//     try {
+//         res.json(bookings);
+//     }
+//     catch {
+//         // this is for MongoDB.. when it will be added 
+//         return res.status(500).json({ error: "Failed to fetch data" });
+//     }
+// }
+// );
 
 
 // route for page where user has reached after selecting a room in homepage
@@ -157,18 +131,18 @@ app.get("/booking/listing", (req, res) => {
 
 
 // post request to save booking data
-app.post("/Booking", ValidateBookingData, (req, res) => {
-    console.log("Reaching here");
+// app.post("/Booking", ValidateBookingData, (req, res) => {
+//     console.log("Reaching here");
 
-    const { name, idCardNumber, nightsToStay } = req.body;
+//     const { name, idCardNumber, nightsToStay } = req.body;
 
-    const BookingData = { name, idCardNumber, nightsToStay };
+//     const BookingData = { name, idCardNumber, nightsToStay };
 
-    bookings.push(BookingData);
+//     bookings.push(BookingData);
 
-    res.status(201).json({ message: "Booking successfully added!", BookingData })
-}
-)
+//     res.status(201).json({ message: "Booking successfully added!", BookingData })
+// }
+// )
 
 // Start the server
 app.listen(PORT, () => {

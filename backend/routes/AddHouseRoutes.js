@@ -7,6 +7,7 @@ import dotenv from "dotenv"
 const HomeAddRouter = express.Router();
 dotenv.config();
 
+// To get all the listing s of rooms/houses in the database
 HomeAddRouter.get("/getall", async (req, res) => {
     const allData = await HouseData.find({});
     if (!allData) {
@@ -43,25 +44,25 @@ HomeAddRouter.post("/save", async (req, res) => {
 }
 )
 
-HomeAddRouter.post("/getall", async (req, res) => {
-    try {
-        const returnedUser = null;
-        if (!returnedUser) {
-            return res.status(400).send("User Not founf with provided username")
-        }
-        const isPasswordCorrect = await bcrypt.compare(password, returnedUser.password);
-        if (!isPasswordCorrect) {
-            return res.status(400).send("Invalid Password")
-        }
+// HomeAddRouter.post("/getall", async (req, res) => {
+//     try {
+//         const returnedUser = null;
+//         if (!returnedUser) {
+//             return res.status(400).send("User Not found with provided username")
+//         }
+//         const isPasswordCorrect = await bcrypt.compare(password, returnedUser.password);
+//         if (!isPasswordCorrect) {
+//             return res.status(400).send("Invalid Password")
+//         }
 
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" })
-        return res.status(200).json(returnedUser)
-    }
-    catch (error) {
-        return res.status(400).send("something went wrong while logging in!")
-    }
-}
-)
+//         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" })
+//         return res.status(200).json(returnedUser)
+//     }
+//     catch (error) {
+//         return res.status(400).send("something went wrong while logging in!")
+//     }
+// }
+// )
 
 HomeAddRouter.get("/:id", async (req, res) => {
     try {

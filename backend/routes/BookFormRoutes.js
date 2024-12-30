@@ -11,6 +11,7 @@ BookingRouter.get("/",(req,res)=>
     res.send("I am here")
 });
 
+// To get all the bookings in the DB (for Admin)
 BookingRouter.get("/getall", async (req, res) => {
     const allData = await Booking.find({});
     
@@ -21,15 +22,63 @@ BookingRouter.get("/getall", async (req, res) => {
     return res.status(200).json(allData);
 });
 
+// To get bookings related to a specific user (non admin user)
+BookingRouter.get("/:username", async (req, res) => {
+    try {
+        const username = req.params.username; // get the username from the URL parameter
+        console.log(username)
+        const Required_Booking = await Booking.find({ name: username }); // find bookings by the 'name' 
+        
+        if (!Required_Booking || Required_Booking.length === 0) {
+            return res.status(404).json({ error: "Bookings not found for this username" });
+        }
+        
+        return res.status(200).json(Required_Booking); 
+    } catch (error) {
+        console.log(error);
+        return res.status(400).send("Something went wrong while fetching the data");
+    }
+});
 
-BookingRouter.post("/save", async (req, res) => {
+
+
+
+// middle ware for save router
+const ValidateBookingData = (req, res, next) => {
+    const _name = req.body.name;
+    const _idCardNumber = req.body.idCardNumber;
+    const _nightsToStay = req.body.nightsToStay;
+
+    if (!_name || !_idCardNumber || !_nightsToStay) {
+        return res.status(400).json({ error: "input data is empty" });
+    }
+    else if (_nightsToStay === 0) {
+        return res.status(400).json({ error: "Number of Nights cant be zero" });
+    }
+    else {
+        console.log("No problem in form input data")
+        next();
+    }
+
+};
+
+
+// To save a booking
+BookingRouter.post("/save",ValidateBookingData,async (req, res) => {
     try {
         const { name, IDcard, nightsToStay, roomID } = req.body;
 
-        // Validate required fields
-        if (!name || !IDcard || !nightsToStay || !roomID) {
-            return res.status(400).json({ error: "All fields are required." });
-        }
+        // // Validate required fields
+        // if (!name || !IDcard || !nightsToStay || !roomID) {
+        //     return res.status(400).json({ error: "All fields are required." });
+        // }
+        // else if (_nightsToStay === 0) {
+        //     return res.status(400).json({ error: "Number of Nights cant be zero" });
+        // }
+        // else {
+        //     console.log("No problem in form input data")
+        //     next();
+        // }
 
         // Create and save the booking request
         const BookingRequest = new Booking({
@@ -48,6 +97,46 @@ BookingRouter.post("/save", async (req, res) => {
         });
     }
 });
+
+
+
+
+
+export default BookingRouter;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // BookingRouter.post("/getall", async (req, res) =>{
@@ -88,7 +177,3 @@ BookingRouter.post("/save", async (req, res) => {
 //     }
 // }
 // )
-
-
-
-export default BookingRouter;

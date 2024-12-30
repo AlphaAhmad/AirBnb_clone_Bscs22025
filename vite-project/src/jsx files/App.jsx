@@ -8,8 +8,10 @@ import LoginForm from './loginPage.jsx';
 import SignUp from './SignUp_page.jsx';
 import { Navigate } from 'react-router-dom';
 import { useAuthStore } from '../store/useAuthStore.js';
-import axios from 'axios';
+import axios from 'axios';  
 import { useEffect } from 'react';
+import BookingList from './BookingList.jsx';
+import AdminPanel from './Adminpanel.jsx';
 
 function App() {
 
@@ -48,6 +50,8 @@ function App() {
                 <Routes>
                     <Route exact path='/BookingPage/:roomID' element={<BookingPage />}></Route>
 
+                    <Route exact path="/Bookinglist/:userID" element={<BookingList/>}></Route>
+
                     <Route exact path='/' element={
                         // if user is present go to login else navigate to Login
                         user ? <Homepage /> : <Navigate to="/login" />
@@ -60,8 +64,16 @@ function App() {
                     }></Route>
 
                     <Route exact path='/Signup' element={<SignUp />}></Route>
-                    
-                    {/* <Route exact path='/' element={<Homepage />}></Route> */}
+
+                    <Route 
+                    exact 
+                    path='/admin' 
+                    element={
+                        user && user.isAdmin === true ? <AdminPanel /> : <Navigate to="/" />
+                    }
+                />
+                  
+
                 </Routes>
             </Router>
         </>

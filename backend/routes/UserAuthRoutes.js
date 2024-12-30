@@ -11,10 +11,29 @@ UserAuthRouter.get("/", (req, res) => {
 }
 )
 
+UserAuthRouter.get("/:id",async (req,res)=>
+    {
+        try{
+            const _id = req.params.id;
+            const Required_Room = await User.findById({_id})
+            if (!Required_Room) {
+                return res.status(404).json({ error: "Card not found" });
+            }
+            return res.status(200).json(Required_Room); 
+        }
+        catch(error)
+        {
+            console.log(error);
+            return res.status(400).send("something went wrong while fetching the user data");
+        }
+        
+    }
+);
+
 
 UserAuthRouter.post("/signup", async (req, res) => {
     try {
-        const { username, password } = req.body;
+        const { username, password, isAdmin } = req.body;
         const isAlreadyExists = await User.findOne({ username });
         if (isAlreadyExists) {
             return res.status(400).send("User Already Exists with entered Username")
@@ -24,6 +43,7 @@ UserAuthRouter.post("/signup", async (req, res) => {
             {
                 username,
                 password: hashed_Password,
+                isAdmin,
             }
         );
 
