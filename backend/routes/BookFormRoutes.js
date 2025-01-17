@@ -32,7 +32,7 @@ BookingRouter.get("/:username", async (req, res) => {
         if (!Required_Booking || Required_Booking.length === 0) {
             return res.status(404).json({ error: "Bookings not found for this username" });
         }
-        
+
         return res.status(200).json(Required_Booking); 
     } catch (error) {
         console.log(error);
@@ -44,41 +44,41 @@ BookingRouter.get("/:username", async (req, res) => {
 
 
 // middle ware for save router
-const ValidateBookingData = (req, res, next) => {
-    const _name = req.body.name;
-    const _idCardNumber = req.body.idCardNumber;
-    const _nightsToStay = req.body.nightsToStay;
+// const ValidateBookingData = (req, res, next) => {
+//     const _name = req.body.name;
+//     const _idCardNumber = req.body.idCardNumber;
+//     const _nightsToStay = req.body.nightsToStay;
 
-    if (!_name || !_idCardNumber || !_nightsToStay) {
-        return res.status(400).json({ error: "input data is empty" });
-    }
-    else if (_nightsToStay === 0) {
-        return res.status(400).json({ error: "Number of Nights cant be zero" });
-    }
-    else {
-        console.log("No problem in form input data")
-        next();
-    }
+//     if (!_name || !_idCardNumber || !_nightsToStay) {
+//         return res.status(400).json({ error: "input data is empty" });
+//     }
+//     else if (_nightsToStay === 0) {
+//         return res.status(400).json({ error: "Number of Nights cant be zero" });
+//     }
+//     else {
+//         console.log("No problem in form input data")
+//         next();
+//     }
 
-};
+// };
 
 
 // To save a booking
-BookingRouter.post("/save",ValidateBookingData,async (req, res) => {
+BookingRouter.post("/save",async (req, res) => {
     try {
         const { name, IDcard, nightsToStay, roomID } = req.body;
 
-        // // Validate required fields
-        // if (!name || !IDcard || !nightsToStay || !roomID) {
-        //     return res.status(400).json({ error: "All fields are required." });
-        // }
-        // else if (_nightsToStay === 0) {
-        //     return res.status(400).json({ error: "Number of Nights cant be zero" });
-        // }
-        // else {
-        //     console.log("No problem in form input data")
-        //     next();
-        // }
+        // Validate required fields
+        if (!name || !IDcard || !nightsToStay || !roomID) {
+            return res.status(400).json({ error: "All fields are required." });
+        }
+        else if (_nightsToStay === 0) {
+            return res.status(400).json({ error: "Number of Nights cant be zero" });
+        }
+        else {
+            console.log("No problem in form input data")
+            next();
+        }
 
         // Create and save the booking request
         const BookingRequest = new Booking({
